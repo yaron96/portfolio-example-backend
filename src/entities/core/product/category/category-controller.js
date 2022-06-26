@@ -1,9 +1,9 @@
-import { CategoryService } from './category-service.js'
+import { CategoryService } from "./category-service.js";
 
 export const CategoryController = {
     getAll: async (req, res, next) => {
-        const categories = await CategoryService.getAll()
-        res.json(categories)
+        const categories = await CategoryService.getAll();
+        res.json(categories);
     },
     create: async (req, res, next) => {
         const { title } = req.body;
@@ -11,16 +11,21 @@ export const CategoryController = {
         res.json(created);
     },
     remove: async (req, res, next) => {
-        const { id } = req.params
-        const removed = await CategoryService.remove(id)
-        res.json(removed)
+        const { id } = req.params;
+        const removed = await CategoryService.remove(id);
+        res.json(removed);
     },
     update: async (req, res, next) => {
-        const { id } = req.params
-        const updates = req.body
-        console.log(id)
-        console.log(updates)
-        //const updated = await CategoryService.update(id, updates)
-        res.json({})
+        const { id } = req.params;
+        const updates = req.body;
+        const updated = await CategoryService.update(id, updates);
+        res.json(updated);
     },
-}
+    move: async (req, res, next) => {
+        const { id: drag_id } = req.params;
+        const { drop_id, drop_pos } = req.body
+        const updatedParrent = 
+            await CategoryService.move(drag_id, drop_id, drop_pos)
+        res.json(updatedParrent)
+    },
+};

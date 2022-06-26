@@ -7,7 +7,7 @@ dotenv.config()
 mongoose.Promise = global.Promise
 
 try {
-    await mongoose.connect(process.env.DB_URL)
+    mongoose.connect(process.env.DB_URL)
     console.log(`Mongoose - successful connection ...`)
 } catch (e) {
     console.log(e)
