@@ -1,4 +1,4 @@
-import { AuthError } from '../exceptions/auth-error.js'
+import { AuthError } from '../entities/auth/auth-error.js'
 
 export const ErrorMiddleware = function (err, req, res, next) {
     console.log('errormiddleware')
